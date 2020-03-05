@@ -123,4 +123,18 @@ public class UserValidationTestCases {
         result = user.isValidNumber("913 798987987");
         Assert.assertFalse(result);
     }
+
+    @Test
+    public void givenPassword_WhenValidLength_ThenReturn() {
+        boolean result = user.isValidPassword("12345678");
+        Assert.assertTrue(result);
+        result = user.isValidPassword("123456789");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPassword_WhenInvalidLength_ThenReturn() {
+        boolean result = user.isValidPassword("1234567");
+        Assert.assertFalse(result);
+    }
 }
