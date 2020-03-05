@@ -95,4 +95,32 @@ public class UserValidationTestCases {
             Assert.assertFalse(result);
         }
     }
+
+    @Test
+    public void givenNumber_WhenValidLength_ThenReturn() {
+        boolean result = user.isValidNumber("91 7989879873");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenNumber_WhenInvalidLength_ThenReturn() {
+        boolean result = user.isValidNumber("91 79898798733");
+        Assert.assertFalse(result);
+        result = user.isValidNumber("7989879873");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenNumber_WhenValidSpace_ThenReturn() {
+        boolean result = user.isValidNumber("91 7989879873");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenNumber_WhenInvalidSpace_ThenReturn() {
+        boolean result = user.isValidNumber("917989879873");
+        Assert.assertFalse(result);
+        result = user.isValidNumber("913 798987987");
+        Assert.assertFalse(result);
+    }
 }

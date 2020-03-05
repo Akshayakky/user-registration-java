@@ -21,4 +21,9 @@ public class ValidateUser {
         String emailPattern="^[0-9A-Za-z]+([-_+.][0-9A-Za-z]+)?[@][a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?$";
         return Pattern.matches(emailPattern,Email);
     }
+
+    public boolean isValidNumber(String number) {
+        String numberPattern="^[0-9]{2}[ ][0-9]{10}$";
+        return Pattern.matches(numberPattern,number);
+    }
 }
