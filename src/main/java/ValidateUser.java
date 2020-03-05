@@ -26,9 +26,7 @@ public class ValidateUser {
     }
 
     public boolean isValidPassword(String password) {
-        if (password.length() >= 8)
-            return true;
-        else
-            return false;
+        String passwordPattern = "(?=.*[A-Z]).{8,}";
+        return Pattern.matches(passwordPattern,password);
     }
 }

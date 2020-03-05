@@ -32,6 +32,7 @@ public class UserValidationTestCases {
             "abc@gmail.com.aa.au",
     };
 
+    //JUNIT TESTING FOR FIRSTNAME
     @Test
     public void givenFirstName_WhenValidFirstLetterUpperCase_ThenReturn() {
         boolean result = user.isValidFirstName("Akshay");
@@ -56,6 +57,7 @@ public class UserValidationTestCases {
         Assert.assertFalse(result);
     }
 
+    //JUNIT TESTING FOR LASTNAME
     @Test
     public void givenLastName_WhenValidFirstLetterUpperCase_ThenReturn() {
         boolean result = user.isValidFirstName("Kharade");
@@ -80,6 +82,7 @@ public class UserValidationTestCases {
         Assert.assertFalse(result);
     }
 
+    //JUNIT TESTING FOR EMAIL
     @Test
     public void givenEmail_WhenValid_ThenReturn() {
         for (int i = 0; i < validEmails.length; i++) {
@@ -96,6 +99,7 @@ public class UserValidationTestCases {
         }
     }
 
+    //JUNIT TESTING FOR MOBILE NUMBER
     @Test
     public void givenNumber_WhenValidLength_ThenReturn() {
         boolean result = user.isValidNumber("91 7989879873");
@@ -124,17 +128,34 @@ public class UserValidationTestCases {
         Assert.assertFalse(result);
     }
 
+    //JUNIT TESTING FOR PASSWORD
     @Test
     public void givenPassword_WhenValidLength_ThenReturn() {
-        boolean result = user.isValidPassword("12345678");
+        boolean result = user.isValidPassword("Akshay12");
         Assert.assertTrue(result);
-        result = user.isValidPassword("123456789");
+        result = user.isValidPassword("Akshay123");
         Assert.assertTrue(result);
     }
 
     @Test
     public void givenPassword_WhenInvalidLength_ThenReturn() {
-        boolean result = user.isValidPassword("1234567");
+        boolean result = user.isValidPassword("Akshay1");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPassword_WhenValidUppercase_ThenReturn() {
+        boolean result = user.isValidPassword("Akshay123");
+        Assert.assertTrue(result);
+        result = user.isValidPassword("AKSHAY123");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPassword_WhenInvalidUppercase_ThenReturn() {
+        boolean result = user.isValidPassword("akshay123");
+        Assert.assertFalse(result);
+        result = user.isValidPassword("akshayakshay");
         Assert.assertFalse(result);
     }
 }
