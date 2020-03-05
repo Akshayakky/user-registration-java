@@ -155,7 +155,19 @@ public class UserValidationTestCases {
     public void givenPassword_WhenInvalidUppercase_ThenReturn() {
         boolean result = user.isValidPassword("akshay123");
         Assert.assertFalse(result);
-        result = user.isValidPassword("akshayakshay");
+        result = user.isValidPassword("akshayakshay12");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPassword_WhenValidNumericCase_ThenReturn() {
+        boolean result = user.isValidPassword("Akshay123");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPassword_WhenInvalidNumericCase_ThenReturn() {
+        boolean result = user.isValidPassword("Akshayakshay");
         Assert.assertFalse(result);
     }
 }
