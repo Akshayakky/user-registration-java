@@ -131,43 +131,65 @@ public class UserValidationTestCases {
     //JUNIT TESTING FOR PASSWORD
     @Test
     public void givenPassword_WhenValidLength_ThenReturn() {
-        boolean result = user.isValidPassword("Akshay12");
+        boolean result = user.isValidPassword("Akshay@1");
         Assert.assertTrue(result);
-        result = user.isValidPassword("Akshay123");
+        result = user.isValidPassword("Akshay@12");
         Assert.assertTrue(result);
     }
 
     @Test
     public void givenPassword_WhenInvalidLength_ThenReturn() {
-        boolean result = user.isValidPassword("Akshay1");
+        boolean result = user.isValidPassword("Akshay@");
         Assert.assertFalse(result);
     }
 
     @Test
     public void givenPassword_WhenValidUppercase_ThenReturn() {
-        boolean result = user.isValidPassword("Akshay123");
+        boolean result = user.isValidPassword("Akshay@123");
         Assert.assertTrue(result);
-        result = user.isValidPassword("AKSHAY123");
+        result = user.isValidPassword("AKSHAY@123");
         Assert.assertTrue(result);
     }
 
     @Test
     public void givenPassword_WhenInvalidUppercase_ThenReturn() {
-        boolean result = user.isValidPassword("akshay123");
+        boolean result = user.isValidPassword("akshay@123");
         Assert.assertFalse(result);
-        result = user.isValidPassword("akshayakshay12");
+        result = user.isValidPassword("akshayakshay@12");
         Assert.assertFalse(result);
     }
 
     @Test
     public void givenPassword_WhenValidNumericCase_ThenReturn() {
-        boolean result = user.isValidPassword("Akshay123");
+        boolean result = user.isValidPassword("Akshay@123");
         Assert.assertTrue(result);
     }
 
     @Test
     public void givenPassword_WhenInvalidNumericCase_ThenReturn() {
-        boolean result = user.isValidPassword("Akshayakshay");
+        boolean result = user.isValidPassword("Akshay@akshay");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPassword_WhenValidSpecialCharacter_ThenReturn() {
+        boolean result = user.isValidPassword("Akshay@123");
+        Assert.assertTrue(result);
+        result = user.isValidPassword("Akshay123@");
+        Assert.assertTrue(result);
+        result = user.isValidPassword("@Akshay123");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPassword_WhenInvalidSpecialCharacter_ThenReturn() {
+        boolean result = user.isValidPassword("Akshay@@123");
+        Assert.assertFalse(result);
+        result = user.isValidPassword("Akshay123");
+        Assert.assertFalse(result);
+        result = user.isValidPassword("Akshay123@@");
+        Assert.assertFalse(result);
+        result = user.isValidPassword("@@Akshay123");
         Assert.assertFalse(result);
     }
 }

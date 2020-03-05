@@ -31,7 +31,7 @@ public class ValidateUser {
 
     //FUNCTION TO VALIDATE PASSWORD
     public boolean isValidPassword(String password) {
-        String passwordPattern = "(?=.*[A-Z])(?=.*[0-9]).{8,}";
+        String passwordPattern = "^(?=.{8,})(?=.*[A-Z])(?=.*[0-9])[A-Za-z0-9]*[^A-Za-z0-9][A-Za-z0-9]*$";
         return Pattern.matches(passwordPattern,password);
     }
 }
